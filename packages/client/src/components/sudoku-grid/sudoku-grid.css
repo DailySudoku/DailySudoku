@@ -1,0 +1,182 @@
+
+.sudoku-grid {
+    text-align: center;
+}
+
+.sudoku-grid.mini {
+    display: inline-block;
+}
+
+.sudoku-grid .line {
+    stroke: var(--grid-line-color);
+    stroke-width: var(--grid-line-width);
+}
+
+.sudoku-grid.mini .line {
+    stroke: var(--mini-grid-line-color);
+    stroke-width: var(--grid-line-width);
+}
+
+.sudoku-grid .line-bold {
+    stroke: var(--grid-line-color-bold);
+    stroke-width: var(--grid-line-width-bold);
+    stroke-linejoin: round;
+}
+
+.grid-bg { fill: var(--background-color); }
+
+path.selection-outline {
+    fill: none;
+    stroke: var(--selection-outline-color);
+    stroke-width: 10;
+}
+
+.cell-select-match-overlay {
+    fill: transparent;
+}
+
+.cell-bg .color-code-1 { fill: var(--cell-bg-1-fill-color); }
+.cell-bg .color-code-2 { fill: var(--cell-bg-2-fill-color); }
+.cell-bg .color-code-3 { fill: var(--cell-bg-3-fill-color); }
+.cell-bg .color-code-4 { fill: var(--cell-bg-4-fill-color); }
+.cell-bg .color-code-5 { fill: var(--cell-bg-5-fill-color); }
+.cell-bg .color-code-6 { fill: var(--cell-bg-6-fill-color); }
+.cell-bg .color-code-7 { fill: var(--cell-bg-7-fill-color); }
+.cell-bg .color-code-8 { fill: var(--cell-bg-8-fill-color); }
+.cell-bg .color-code-9 { fill: var(--cell-bg-9-fill-color); }
+
+.selection-style-solid .selected .cell-select-match-overlay {
+    fill: var(--selected-fill-color);
+}
+
+.matched .cell-select-match-overlay {
+    fill: var(--matched-fill-color);
+}
+
+.selected.matched .cell-select-match-overlay {
+    fill: var(--selected-matched-fill-color);
+}
+
+.selection-style-solid .error.selected .cell-select-match-overlay {
+    fill: var(--error-selected-fill-color);
+}
+
+.error .cell-select-match-overlay {
+    fill: var(--error-fill-color);
+}
+
+text.digit.error {
+    fill: var(--error-text-color);
+}
+
+.solved .cell-select-match-overlay {
+    fill: var(--solved-fill-color);
+}
+
+text.digit {
+    fill: var(--digit-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.solved text.digit {
+    fill: var(--solved-digit-color);
+}
+
+text.digit.given,
+.mini text.digit {
+    fill: var(--given-digit-color);
+}
+
+a:visited .mini text.digit {
+    fill: var(--visited-digit-color);
+}
+
+a:visited:hover .mini text.digit,
+.saved-puzzle a .mini text.digit {
+    fill: var(--given-digit-color);
+}
+
+.saved-puzzle .mini text.user-digit,
+.saved-puzzle a .mini text.user-digit {
+    fill: var(--digit-color);
+}
+
+.difficulty-bar {
+    fill: var(--mini-grid-bar-color);
+}
+
+.difficulty-rating {
+    fill: var(--mini-grid-bar-text-color);
+}
+
+.solved text.digit.given {
+    fill: var(--solved-given-digit-color);
+}
+
+.paused text.digit {
+    fill: var(--paused-digit-color);
+}
+
+text.inner-pencil,
+.outer-pencil text,
+.simple-pencil text {
+    fill: var(--pencil-mark-color);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sudoku-grid.hint .cell-bg {
+    fill: transparent;
+}
+
+.sudoku-grid.hint .cell-bg.hint-target {
+    fill: var(--hint-target-fill-color);
+}
+
+.sudoku-grid.hint .cell-bg.hint-highlight {
+    fill: var(--hint-highlight-fill-color);
+}
+
+.sudoku-grid.hint .cell-bg.hint-eliminations {
+    fill: var(--hint-eliminations-fill-color);
+}
+
+.sudoku-grid.hint .hot-spot-highlight {
+    fill: transparent;
+    stroke: var(--hint-hot-spot-highlight-color);
+    stroke-width: var(--hint-hot-spot-highlight-line-width);
+}
+
+.sudoku-grid.hint text {
+    fill: var(--given-digit-color);
+}
+
+.sudoku-grid.hint text.new-digit-bg {
+    fill: var(--hint-new-digit-bg-color);
+}
+
+.sudoku-grid.hint text.new-digit {
+    fill: var(--hint-new-digit-fill-color);
+}
+
+.sudoku-grid.hint text.elimination-bg {
+    fill: var(--hint-elimination-bg-color);
+}
+
+.sudoku-grid.hint text.elimination {
+    fill: var(--hint-elimination-fill-color);
+}
+
+.animate .solved .cell-bg[data-ring="5"] .cell-select-match-overlay { animation: 1600ms linear 0ms 1 running rainbow; }
+.animate .solved .cell-bg[data-ring="4"] .cell-select-match-overlay { animation: 1600ms linear 100ms 1 running rainbow; }
+.animate .solved .cell-bg[data-ring="3"] .cell-select-match-overlay { animation: 1600ms linear 200ms 1 running rainbow; }
+.animate .solved .cell-bg[data-ring="2"] .cell-select-match-overlay { animation: 1600ms linear 300ms 1 running rainbow; }
+.animate .solved .cell-bg[data-ring="1"] .cell-select-match-overlay { animation: 1600ms linear 400ms 1 running rainbow; }
+
+@keyframes rainbow {
+    from { fill: #8bb3ff; }
+    20%  { fill: #f1dbff; }
+    40%  { fill: #ffb5da; }
+    60%  { fill: #ff9b5b; }
+    70%  { fill: #ffff9a; }
+    to   { fill: var(--solved-fill-color); }
+}

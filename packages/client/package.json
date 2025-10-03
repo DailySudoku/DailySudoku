@@ -1,0 +1,43 @@
+{
+  "name": "sudoku-web-app",
+  "version": "1.0.32",
+  "description": "A web application for solving & sharing Sudoku puzzles. Created for SudokuExchange.com",
+  "author": {
+    "name": "Grant McLean",
+    "email": "grant@mclean.net.nz",
+    "url": "https://grantm.github.io/"
+  },
+  "license": "AGPLV3",
+  "repository": "github:grantm/sudoku-web-app",
+  "bugs": "https://github.com/grantm/sudoku-web-app/issues",
+  "keywords": [
+    "sudoku"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@discord/embedded-app-sdk": "^2.4.0",
+    "hono": "^4.9.9",
+    "immutable": "4.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "save-svg-as-png": "1.4.17"
+  },
+  "scripts": {
+    "build": "vite build",
+    "cf-typegen": "wrangler types",
+    "check": "vite build && wrangler deploy --dry-run",
+    "deploy": "wrangler deploy",
+    "dev": "vite",
+    "lint": "eslint .",
+    "preview": "npm run build && vite preview"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.13.10",
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.9",
+    "wrangler": "^4.42.0"
+  }
+}

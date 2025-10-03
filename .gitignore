@@ -1,0 +1,9 @@
+node_modules
+*.pem
+*.log
+.DS_Store
+build
+dist
+.env
+/config.yml
+.idea

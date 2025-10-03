@@ -1,0 +1,287 @@
+:root {
+    --app-font-family: 'Helvetica Neue', Arial, sans-serif;
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --link-text-color: #0000ff;
+    --link-bg-color: transparent;
+    --link-hover-text-color: #0000ff;
+    --link-hover-bg-color: #ffeadb;
+    --status-bar-text-color: #777777;
+    --status-bar-bg: linear-gradient(#efefef, #e6e6e6);
+    --status-bar-border-color: #c7c7c7;
+    --status-bar-button-hover-color: #d7d7d7;
+    --menu-border-color: #888888;
+    --menu-text-color: #333333;
+    --menu-bg-color: #ffffff;
+    --menu-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    --menu-hover-text-color: #000000;
+    --menu-hover-bg-color: #e6e6e6;
+    --menu-disabled-text-color: #cccccc;
+    --modal-text-color: #333333;
+    --modal-bg-color: #ffffff;
+    --modal-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    --modal-backdrop-color: #00000088;
+    --modal-heading-underline-color: #888888;
+    --modal-button-text-color: #333333;
+    --modal-button-bg-color: #e0e0e0;
+    --modal-button-primary-text-color: #333333;
+    --modal-button-primary-bg-color: #acddfb;
+    --modal-button-danger-text-color: #333333;
+    --modal-button-danger-bg-color: #ff9e9e;
+    --modal-icon-ok-fill-color: #23a359;
+    --modal-icon-warning-fill-color: #ffdd55;
+    --modal-icon-error-fill-color: #c83737;
+    --button-hover-shadow: 0 0 1px #00000099;
+    --input-toggle-bg-color: #dddddd;
+    --input-toggle-inset-color: #dddddd20;
+    --input-toggle-off-color: #888888;
+    --input-toggle-on-color: #08bd08;
+    --input-multi-text-color: #777777;
+    --input-multi-bg-color: transparent;
+    --input-multi-selected-text-color: #333333;
+    --input-multi-selected-bg-color: #73e869;
+    --badge-text-color: #ffffff;
+    --badge-bg-color: #ff0000;
+    --solved-text-color: #00a000;
+    --grid-line-color: #777777;
+    --grid-line-color-bold: #333333;
+    --mini-grid-line-color: #aaaaaa;
+    --mini-grid-bar-color: #fff1a3;
+    --mini-grid-bar-text-color: #333333;
+    --given-digit-color: #333333;
+    --visited-digit-color: #aaaaaa;
+    --paused-digit-color: #00000033;
+    --digit-color: #4444dd;
+    --pencil-mark-color: #4444dd;
+    --error-fill-color: #ff111133;
+    --error-text-color: #aa0000;
+    --selection-outline-color: #7b9ee1;
+    --selected-fill-color: #004fe368;
+    --matched-fill-color: #659bff44;
+    --selected-matched-fill-color: #8bb3ff;
+    --cell-bg-1-fill-color: transparent;
+    --cell-bg-2-fill-color: #ffb8bc;
+    --cell-bg-3-fill-color: #ffd085;
+    --cell-bg-4-fill-color: #ffffb6;
+    --cell-bg-5-fill-color: #caf9ca;
+    --cell-bg-6-fill-color: #f1dbff;
+    --cell-bg-7-fill-color: #c8f7ff;
+    --cell-bg-8-fill-color: #ffa8d8;
+    --cell-bg-9-fill-color: #d7d7d7;
+    --solved-digit-color: #4444dd;
+    --solved-given-digit-color: #333333;
+    --solved-fill-color: #b9ffb9;
+    --error-selected-fill-color: #ff8c8c;
+    --hint-hot-spot-bg-color: #f1f1f1;
+    --hint-hot-spot-hover-bg-color: #acddfb70;
+    --hint-hot-spot-highlight-color: #ff0000;
+    --hint-footer-bg-color: #f0f0f0;
+    --hint-target-fill-color: #caf9ca;
+    --hint-highlight-fill-color: #ffffd3;
+    --hint-new-digit-fill-color: #ffffff;
+    --hint-new-digit-bg-color: #0c9500;
+    --hint-eliminations-fill-color: #fbc4c7;
+    --hint-elimination-bg-color: #ff0000;
+    --hint-elimination-fill-color: #ffffff;
+    --difficulty-indicator-bg-color: transparent;
+    --difficulty-indicator-border-color: #afafaf;
+    --difficulty-indicator-text-color: #888888;
+    --difficulty-indicator-label-color: #8f8f8f;
+    --button-bg-color: #acddfb;
+    --button-text-color: #333333;
+    --grid-line-width: 2;
+    --grid-line-width-bold: 5;
+    --hint-hot-spot-highlight-line-width: 7;
+    --vkbd-bg-fill-color: #cccccc;
+    --vkbd-button-fill-color: #ffffff;
+    --vkbd-button-text-color: #333333;
+    --vkbd-completed-button-text-color: #4cce4c;
+    --vkbd-mode-panel-fill-color: #e6e6e6;
+    --vkbd-mode-text-color: #888888;
+    --vkbd-active-mode-fill-color: #777777;
+    --vkbd-mode-icon-fill-color: #333333;
+    --vkbd-active-mode-icon-fill-color: #eeeeee;
+    --spinner-color: #dddddd;
+}
+
+:root .dark {
+    --background-color: #3c3637;
+    --text-color: #9d9a9a;
+    --link-text-color: #acddfb;
+    --link-bg-color: transparent;
+    --link-hover-text-color: #acddfb;
+    --link-hover-bg-color: #535353;
+    --status-bar-text-color: #dfdfdf;
+    --status-bar-bg: linear-gradient(#575354, #403b3c);
+    --status-bar-border-color: #000000;
+    --status-bar-button-hover-color: #726c6d;
+    --menu-border-color: #171717;
+    --menu-text-color: #9d9a9a;
+    --menu-bg-color: #443f3f;
+    --menu-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    --menu-hover-text-color: #c4c4c4;
+    --menu-hover-bg-color: #182f5d;
+    --menu-disabled-text-color: #555555;
+    --modal-text-color: #9d9a9a;
+    --modal-bg-color: #443f3f;
+    --modal-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    --modal-backdrop-color: #00000088;
+    --modal-heading-underline-color: #888888;
+    --modal-button-text-color: #cabdbd;
+    --modal-button-bg-color: #726c6d;
+    --modal-button-danger-text-color: #cabdbd;
+    --modal-button-danger-bg-color: #ce4f58;
+    --button-hover-shadow: 0 0 2px #ffffff;
+    --input-toggle-bg-color: #726c6d;
+    --input-toggle-inset-color: #444444d0;
+    --input-toggle-off-color: #4f4747;
+    --input-toggle-on-color: #3ba83b;
+    --input-multi-text-color: #777777;
+    --input-multi-bg-color: transparent;
+    --input-multi-selected-text-color: #333333;
+    --input-multi-selected-bg-color: #73e869;
+    --badge-text-color: #ffdfdf;
+    --badge-bg-color: #ec4141;
+    --solved-text-color: #61f061;
+    --grid-line-color: #7b7878;
+    --grid-line-color-bold: #a6a4a4;
+    --mini-grid-line-color: #a6a6a6;
+    --mini-grid-bar-color: #dbcf90;
+    --mini-grid-bar-text-color: #222222;
+    --given-digit-color: #9d9a9a;
+    --visited-digit-color: #666666;
+    --paused-digit-color: #7b7272;
+    --digit-color: #6d96e6;
+    --pencil-mark-color: #6c9cfd;
+    --error-fill-color: #60020278;
+    --error-text-color: #b33d3d;
+    --selected-fill-color: #3058a48a;
+    --matched-fill-color: #032b779c;
+    --selected-matched-fill-color: #1768ff8a;
+    --cell-bg-1-fill-color: transparent;
+    --cell-bg-2-fill-color: #973838;
+    --cell-bg-3-fill-color: #793900;
+    --cell-bg-4-fill-color: #777036;
+    --cell-bg-5-fill-color: #2f6a2f;
+    --cell-bg-6-fill-color: #25267d;
+    --cell-bg-7-fill-color: #8c6447;
+    --cell-bg-8-fill-color: #7e3158;
+    --cell-bg-9-fill-color: #515151;
+    --solved-digit-color: #5b77ae;
+    --solved-given-digit-color: #595959;
+    --solved-fill-color: #77e877;
+    --error-selected-fill-color: #ff8c8c;
+    --hint-hot-spot-bg-color: #575757;
+    --hint-hot-spot-hover-bg-color: #acddfb;
+    --hint-hot-spot-highlight-color: #cc3333;
+    --hint-footer-bg-color: #312e2e;
+    --hint-target-fill-color: #796827;
+    --hint-highlight-fill-color: #796c03;
+    --hint-new-digit-fill-color: #2cff2c;
+    --hint-new-digit-bg-color: #3c3637;
+    --hint-eliminations-fill-color: #973838;
+    --hint-elimination-bg-color: #fbb6b6;
+    --hint-elimination-fill-color: #d70000;
+    --difficulty-indicator-bg-color: transparent;
+    --difficulty-indicator-border-color: #6f6f6f;
+    --difficulty-indicator-text-color: #888888;
+    --difficulty-indicator-label-color: #7f7f7f;
+    --button-bg-color: #acddfb;
+    --button-text-color: #333333;
+    --grid-line-width: 2;
+    --grid-line-width-bold: 5;
+    --vkbd-bg-fill-color: #535962;
+    --vkbd-button-fill-color: #3e393a;
+    --vkbd-button-text-color: #939191;
+    --vkbd-completed-button-text-color: #60ac60;
+    --vkbd-mode-panel-fill-color: #504d53;
+    --vkbd-mode-text-color: #8a8a8a;
+    --vkbd-active-mode-fill-color: #aaa9a9;
+    --vkbd-mode-icon-fill-color: #9d9a9a;
+    --vkbd-active-mode-icon-fill-color: #484747;
+    --spinner-color: #777777;
+}
+
+html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: var(--app-font-family);
+    font-size: 1.2rem;
+    touch-action: none;
+}
+
+#root {
+    box-sizing: border-box;
+    padding-top: 7.5vh;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+a {
+    color: var(--link-text-color);
+    background-color: var(--link-bg-color);
+    text-decoration: none;
+    padding: 0 0.1em;
+}
+
+a:hover {
+    color: var(--link-hover-text-color);
+    background-color: var(--link-hover-bg-color);
+    border-bottom: 1px solid var(--link-hover-text-color);
+}
+
+.sudoku-app {
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
+.ui-elements {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.portrait .ui-elements {
+    flex-flow: column nowrap;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.buttons a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 0.4em 0.8em;
+    margin: 0.3em;
+    color: var(--button-text-color);
+    background-color: var(--button-bg-color);
+    border-radius: 0.1em;
+    border: none;
+}
+
+button:hover,
+a.btn:hover {
+    box-shadow: var(--button-hover-shadow);
+}
+
+.portrait .buttons a {
+    font-size: 1rem;
+    margin: 0.2em;
+}

@@ -1,0 +1,701 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--modal-backdrop-color);
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 50%;
+    max-height: 90%;
+    overflow-y: auto;
+    padding: 1em 1em 0 1em;
+    color: var(--modal-text-color);
+    background-color: var(--modal-bg-color);
+    border-radius: 0.3em;
+    line-height: 130%;
+    box-shadow: var(--modal-box-shadow);
+}
+
+.modal h1 {
+    margin-top: 0.2em;
+    line-height: 1.3;
+    font-size: 150%;
+    padding-bottom: 0.16em;
+    border-bottom: 2px solid var(--modal-heading-underline-color);
+}
+
+.modal.check-result .icon-message {
+    display: flex;
+    align-items: flex-start;
+    margin: 0.3em;
+}
+
+.modal.check-result .icon svg {
+    margin-right: 1em;
+    width: 2.4em;
+}
+
+.icon.check-result-ok use {
+    fill: var(--modal-icon-ok-fill-color);
+}
+
+.icon.check-result-warning use {
+    fill: var(--modal-icon-warning-fill-color);
+}
+
+.icon.check-result-error use {
+    fill: var(--modal-icon-error-fill-color);
+}
+
+.modal.check-result .message {
+    align-self: center;
+}
+
+.modal .buttons {
+    margin-top: 1.0em;
+    text-align: right;
+    padding-bottom: 1em;
+}
+
+.modal button {
+    border: none;
+    color: var(--modal-button-text-color);
+    background-color: var(--modal-button-bg-color);
+    margin-left: 1em;
+    min-width: 5em;
+    padding: 0.4em 0.8em;
+    font-size: 100%;
+    font-weight: bold;
+    border-radius: 0.15em;
+}
+
+.modal button:disabled {
+    color: #99999988;
+    cursor: not-allowed;
+}
+
+.modal button:disabled:hover {
+    box-shadow: none;
+}
+
+.modal button.danger {
+    color: var(--modal-button-danger-text-color);
+    background-color: var(--modal-button-danger-bg-color);
+}
+
+.modal button.primary,
+.modal a.btn.primary {
+    color: var(--modal-button-primary-text-color);
+    background-color: var(--modal-button-primary-bg-color);
+}
+
+.modal .buttons a.btn,
+.modal .buttons button,
+.modal.saved-puzzles a.btn,
+.modal.saved-puzzles button {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    /* override browser button font */
+    font-family: var(--app-font-family);
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1.3;
+    margin: 0.3em 0.5em;
+    border: none;
+    border-radius: 0.15em;
+    padding: 0.4em 0.8em;
+}
+
+.portrait .modal .buttons a.btn,
+.portrait .modal .buttons button {
+    margin: 0 0 0.5em 0.5em;
+    min-width: 4em;
+    padding: 0.4em 0.6em;
+}
+
+.modal.welcome {
+    max-width: 30em;
+}
+
+.count-badge {
+    display: inline-grid;
+    place-items: center;
+    margin-left: 0.1em;
+    color: var(--badge-text-color);
+    background-color: var(--badge-bg-color);
+    font-size: 0.8rem;
+    min-width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+}
+
+.modal.welcome .loading-failed {
+    color: var(--error-text-color);
+    font-style: italic;
+    opacity: 0.8;
+    margin: 1.5em 1.5em 2em;
+}
+
+.modal.welcome .spinner {
+    margin: 4.3em auto;
+}
+
+.recently-shared .section {
+    margin: 0.5em 0;
+}
+
+.recently-shared h2 {
+    font-size: 1.5rem;
+    margin: 0.9em 0 0 0;
+}
+
+.recently-shared h2::before {
+    content: '\25BE';
+    display: inline-block;
+    padding-right: 0.3em;
+    vertical-align: top;
+    line-height: 0.9;
+}
+
+.recently-shared .collapsed h2::before {
+    content: '\25B8';
+    line-height: 0.8;
+}
+
+.recently-shared ul {
+    max-height: 700px;
+    overflow: hidden;
+    margin: 0.2em 0 0 0;
+    padding: 0 0 0 0.7em;
+    opacity: 1;
+    transition: all 600ms;
+}
+
+.recently-shared .collapsed ul {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+}
+
+.recently-shared li,
+.recently-shared li a,
+.recently-shared li svg,
+.recently-shared li div {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.recently-shared svg {
+    border-radius: 4px;
+}
+
+.recently-shared a,
+.saved-puzzle a.puzzle-selector {
+    border: 2px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.recently-shared a:hover,
+.saved-puzzle a.puzzle-selector:hover {
+    border: 2px solid var(--link-hover-text-color);
+    background-color: transparent;
+}
+
+#welcome-footer {
+    margin-top: 2em;
+    border-top: 1px solid var(--modal-text-color);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+#welcome-footer p {
+    margin: 0.3em 0 0 0;
+    padding-bottom: 1.5em;
+}
+
+.modal.welcome .primary-buttons {
+    text-align: center;
+    margin-right: 2em;
+}
+
+.modal.welcome .primary-buttons>span {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.modal.welcome .primary-buttons button {
+    margin-top: 0.5em;
+}
+
+.modal.resume-restart {
+    width: 26em;
+    max-width: 95vw;
+}
+
+.modal.saved-puzzles {
+    width: 32em;
+    max-width: 95vw;
+}
+
+.modal.resume-restart .saved-puzzle,
+.modal.saved-puzzles .saved-puzzle {
+    display: flex;
+    align-items: center;
+}
+
+.modal.saved-puzzles .puzzle-selector {
+    display: block;
+    margin: 0.4em 0.4em 0 0;
+}
+
+.modal .saved-puzzle .sudoku-grid.mini {
+    margin-right: 0.4em;
+}
+
+.modal .puzzle-metadata {
+    flex: 0 0 18em;
+    font-size: 80%;
+    line-height: 1.2;
+    height: 1em;
+}
+
+.modal .puzzle-metadata th,
+.modal .puzzle-metadata td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.1em 0.4em 0.1em 0;
+}
+
+.modal.saved-puzzles .puzzle-buttons {
+    flex: 0 0 min-content;
+}
+
+.modal.saved-puzzles a.btn,
+.modal.saved-puzzles button {
+    min-width: 5.5em;
+}
+
+.modal.paste textarea,
+.modal.invalid-initial-digits textarea {
+    width: 100%;
+    height: 7.5em;
+    padding: 0.6em;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    word-break: break-all;
+    resize: none;
+}
+
+.settings-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.settings-list li {
+    margin: 0.6em 0;
+}
+
+.settings-list li label {
+    display: block;
+    position: relative;
+    padding-right: 3.5em;
+}
+
+input.toggle {
+    display: none;
+}
+
+input.toggle+.indicator {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: top;
+    height: 16px;
+    width: 32px;
+    background-color: var(--input-toggle-bg-color);
+    border: 1px inset var(--input-toggle-inset-color);
+    margin: 0 0 0 1.8em;
+    padding: 2px;
+    border-radius: 11px;
+}
+
+input.toggle+.indicator::before {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: var(--input-toggle-off-color);
+    margin: 0;
+    padding: 0;
+    left: 3px;
+    top: 2px;
+    transition: all 250ms;
+}
+
+input.toggle:checked+.indicator::before {
+    left: 17px;
+    background-color: var(--input-toggle-on-color);
+}
+
+.modal-container .modal.features {
+    max-width: min(26em, 94vw);
+}
+
+.feature-list {
+    margin: 0 1em 0 0.6em;
+}
+
+.feature-list th {
+    text-align: left;
+    border-bottom: 1px solid var(--modal-heading-underline-color);
+}
+
+.feature-list td {
+    vertical-align: top;
+}
+
+.feature-list .checkbox-wrapper {
+    display: block;
+    position: relative;
+    width: 2em;
+    margin-top: 0.25em;
+    padding: 0;
+}
+
+.feature-list .description {
+    padding: 0.2em 0.4em;
+}
+
+.feature-list .issue {
+    text-align: right;
+    padding-right: 0.6em;
+}
+
+.modal.about p {
+    max-width: 23em;
+}
+
+.modal.share p {
+    max-width: 18em;
+}
+
+.modal.qr svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80vw;
+    max-height: 80vh;
+}
+
+.difficulty-selector p {
+    margin-bottom: 0.1em;
+}
+
+.difficulty-options input {
+    display: none;
+}
+
+.difficulty-options {
+    display: flex;
+    margin: 0.2em 0 0.8em;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.difficulty-options label {
+    flex: 1 0 auto;
+    margin-right: 0.5em;
+}
+
+.difficulty-options label:last-child {
+    margin-right: 0;
+}
+
+.difficulty-options span {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 0.2em 0;
+    color: var(--input-multi-text-color);
+    border: 1px solid var(--input-multi-text-color);
+    background-color: var(--input-multi-bg-color);
+    border-radius: 0.3em;
+}
+
+.difficulty-options input:checked+span {
+    color: var(--input-multi-selected-text-color);
+    border: 1px solid var(--input-multi-selected-text-color);
+    background-color: var(--input-multi-selected-bg-color);
+    border-color: var(--input-multi-selected-text-color);
+}
+
+.share-time {
+    position: relative;
+}
+
+.share-time.no-share {
+    text-decoration: line-through;
+    text-decoration-color: #999999;
+}
+
+.share-buttons {
+    text-align: center;
+}
+
+.share-buttons ul {
+    display: inline-block;
+    padding: 0;
+    margin: 0.5em 0 0 0;
+}
+
+.share-buttons li {
+    list-style: none;
+    margin-bottom: 0.6em;
+}
+
+.share-buttons a,
+.share-buttons button {
+    display: block;
+    text-align: left;
+    white-space: nowrap;
+    background-color: #777777;
+    color: #ffffff;
+    padding: 0.4em 1em 0.5em 0.5em;
+    border-radius: 0.3em;
+    /* override browser button font */
+    font-family: var(--app-font-family);
+    font-weight: bold;
+}
+
+.share-buttons a,
+.share-buttons a:hover {
+    border: none;
+}
+
+.share-buttons a.btn-facebook {
+    background-color: #3b5998;
+}
+
+.share-buttons a.btn-twitter {
+    background-color: #55acee;
+}
+
+.share-buttons a.btn-twitter::before {
+    background-position: 0px -25px;
+}
+
+.share-buttons a.btn-email::before {
+    background-position: 0px -50px;
+}
+
+.share-buttons button.btn-qr::before {
+    background-position: 0px -75px;
+}
+
+.share-buttons button.btn-qr {
+    margin-left: 0;
+    width: 100%;
+}
+
+.solver input[type=checkbox] {
+    margin-right: 0.6em;
+    vertical-align: text-bottom;
+}
+
+.modal.hint {
+    height: 100%;
+    max-width: 85vw;
+    max-height: 90vh;
+    padding: 0;
+    overflow-y: hidden;
+}
+
+.modal.hint.loading,
+.modal.hint.loading-failed {
+    max-height: 20rem;
+}
+
+.hint-layout {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.8rem;
+}
+
+.hint-body {
+    overflow-y: auto;
+    padding: 0 1rem;
+}
+
+.modal.hint .rc-hot-spot {
+    padding: 0 0.15em;
+    background-color: var(--hint-hot-spot-bg-color);
+    border-radius: 0.15em;
+}
+
+.modal.hint .rc-hot-spot:hover {
+    background-color: var(--hint-hot-spot-hover-bg-color);
+}
+
+.modal .hint-footer {
+    background-color: var(--hint-footer-bg-color);
+    width: 100%;
+    text-align: center;
+}
+
+.hint-footer span {
+    font-size: 1rem;
+    display: inline-block;
+    padding: 0.2em;
+}
+
+.portrait .modal.hint {
+    max-width: 96%;
+    max-height: 90%;
+}
+
+.landscape .hint-body-layout {
+    display: flex;
+}
+
+.landscape .sudoku-grid.hint svg {
+    width: 60vh;
+    max-width: 40vw;
+    margin-right: 1.2em;
+}
+
+.portrait .sudoku-grid.hint svg {
+    height: 50vh;
+    max-height: 88vw;
+    margin-bottom: 1.2em;
+}
+
+.hint-text-wrapper {
+    max-width: 40em;
+}
+
+.hint-text p {
+    margin: 0 0 1.2em 0;
+}
+
+.difficulty-indicator {
+    float: right;
+    margin: 0 0 0.3em 0.8em;
+    border-radius: 0.25em;
+    background-color: var(--difficulty-indicator-bg-color);
+    border: 1px solid var(--difficulty-indicator-border-color);
+    display: grid;
+    grid-template-areas:
+        "title title"
+        "value1 value2"
+        "label1 label2";
+}
+
+.difficulty-indicator>* {
+    line-height: 1;
+    text-align: center;
+    color: var(--difficulty-indicator-label-color);
+}
+
+.difficulty-indicator .title {
+    grid-area: title;
+    font-size: 75%;
+    padding: 0.25em;
+}
+
+.difficulty-indicator .rating-value {
+    font-size: 95%;
+    font-weight: 600;
+    color: var(--difficulty-indicator-text-color);
+}
+
+.difficulty-indicator .rating-value.for-step {
+    grid-area: value1;
+    padding: 0.06em 0.25em 0 0.4em;
+}
+
+.difficulty-indicator .rating-value.for-puzzle {
+    grid-area: value2;
+    padding: 0.06em 0.3em 0 0.25em;
+}
+
+.difficulty-indicator .rating-label {
+    font-size: 62%;
+}
+
+.difficulty-indicator .rating-label.for-step {
+    grid-area: label1;
+    padding: 0.15em 0.25em 0.3em 0.5em;
+}
+
+.difficulty-indicator .rating-label.for-puzzle {
+    grid-area: label2;
+    padding: 0.15em 0.5em 0.3em 0.25em;
+}
+
+.modal.features .no-features {
+    font-style: italic;
+}
+
+@media screen and (max-width: 500px) {
+    .modal {
+        max-width: 94vw;
+        padding: 0.6em 0.6em 0 0.6em;
+    }
+
+    .difficulty-options {
+        font-size: 4.5vw;
+    }
+
+    .modal.check-result .icon img {
+        width: 2.4em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .modal.resume-restart .saved-puzzle,
+    .modal.saved-puzzles .saved-puzzle {
+        flex-wrap: wrap;
+        margin-bottom: 0.8em;
+    }
+
+    .modal.saved-puzzles a.btn,
+    .modal.saved-puzzles button {
+        font-size: 1rem;
+        margin-right: 1.8em;
+    }
+
+    .modal.saved-puzzles saved-puzzle:not(.last) .puzzle-metadata {
+        order: 3;
+        padding-bottom: 0.8em;
+        border-bottom: 1px solid var(--hint-footer-bg-color);
+    }
+}

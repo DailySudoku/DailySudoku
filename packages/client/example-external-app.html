@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External App - Sudoku Progress Tracker Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 20px;
+            height: 80vh;
+        }
+        
+        .sudoku-frame {
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .progress-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .progress-item {
+            margin: 10px 0;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .progress-item.completed {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        
+        .progress-item.paused {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+        
+        .button-group {
+            margin: 20px 0;
+        }
+        
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .log {
+            max-height: 300px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        .log-entry {
+            margin: 2px 0;
+            padding: 2px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .timestamp {
+            color: #6c757d;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sudoku Progress Tracker - External App Example</h1>
+    
+    <div class="container">
+        <div>
+            <h2>Sudoku Game</h2>
+            <iframe 
+                id="sudoku-frame"
+                class="sudoku-frame"
+                width="100%" 
+                height="100%"
+                src="about:blank">
+            </iframe>
+        </div>
+        
+        <div class="progress-panel">
+            <h2>Progress Tracking</h2>
+            
+            <div class="button-group">
+                <button onclick="startNewGame()">Start New Game</button>
+                <button onclick="startWithCallback()">Start with HTTP Callback</button>
+                <button onclick="clearLog()">Clear Log</button>
+            </div>
+            
+            <div id="current-status">
+                <div class="progress-item">
+                    <strong>Status:</strong> <span id="game-status">Not Started</span>
+                </div>
+                <div class="progress-item">
+                    <strong>Time:</strong> <span id="elapsed-time">00:00</span>
+                </div>
+                <div class="progress-item">
+                    <strong>Hints Used:</strong> <span id="hints-used">0</span>
+                </div>
+                <div class="progress-item">
+                    <strong>Progress:</strong> <span id="completion-percent">0%</span>
+                </div>
+            </div>
+            
+            <h3>Activity Log</h3>
+            <div id="log" class="log">
+                <div class="log-entry">Waiting for game to start...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSessionId = null;
+        let lastProgressData = null;
+        
+        // Listen for postMessage from the iframe
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'sudoku-progress') {
+                handleProgressUpdate(event.data.data, event.data.immediate);
+            }
+        });
+        
+        function generateSessionId() {
+            return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+        }
+        
+        function startNewGame() {
+            currentSessionId = generateSessionId();
+            
+            // Example puzzle (easy difficulty)
+            const puzzle = '530070000600195000098000060800060003400803001700020006060000280000419005000080079';
+            
+            const url = `http://localhost:3000/play/?s=${puzzle}&session=${currentSessionId}&method=message&interval=3000`;
+            
+            document.getElementById('sudoku-frame').src = url;
+            
+            logActivity('Started new game with session ID: ' + currentSessionId);
+            updateStatus('Game Loading...', false);
+        }
+        
+        function startWithCallback() {
+            currentSessionId = generateSessionId();
+            
+            // Example puzzle (easy difficulty)  
+            const puzzle = '530070000600195000098000060800060003400803001700020006060000280000419005000080079';
+            
+            // Use a mock callback URL (would be your server endpoint in production)
+            const callbackUrl = encodeURIComponent('https://httpbin.org/post');
+            
+            const url = `http://localhost:3000/play/?s=${puzzle}&session=${currentSessionId}&notify=${callbackUrl}&interval=5000`;
+            
+            document.getElementById('sudoku-frame').src = url;
+            
+            logActivity('Started game with HTTP callback to: ' + decodeURIComponent(callbackUrl));
+            updateStatus('Game Loading...', false);
+        }
+        
+        function handleProgressUpdate(progressData, isImmediate) {
+            lastProgressData = progressData;
+            
+            const gameState = progressData.gameState;
+            const isComplete = gameState.isComplete;
+            const isPaused = gameState.isPaused;
+            
+            // Update status display
+            let status = 'Playing';
+            if (isComplete) {
+                status = 'Completed!';
+            } else if (isPaused) {
+                status = 'Paused';
+            }
+            
+            updateStatus(status, isComplete, isPaused);
+            
+            // Update time display
+            const minutes = Math.floor(gameState.elapsedTime / 60000);
+            const seconds = Math.floor((gameState.elapsedTime % 60000) / 1000);
+            document.getElementById('elapsed-time').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Update hints
+            document.getElementById('hints-used').textContent = gameState.hintsUsed;
+            
+            // Calculate completion percentage
+            const filledCells = (gameState.currentDigits.match(/[1-9]/g) || []).length;
+            const totalCells = 81;
+            const completionPercent = Math.round((filledCells / totalCells) * 100);
+            document.getElementById('completion-percent').textContent = completionPercent + '%';
+            
+            // Log the update
+            const logType = isImmediate ? 'IMMEDIATE' : 'PERIODIC';
+            const logMessage = `[${logType}] Status: ${status}, Time: ${minutes}:${seconds.toString().padStart(2, '0')}, Progress: ${completionPercent}%, Hints: ${gameState.hintsUsed}`;
+            
+            logActivity(logMessage);
+            
+            if (isComplete) {
+                logActivity(`🎉 GAME COMPLETED! Final time: ${minutes}:${seconds.toString().padStart(2, '0')}`);
+            }
+        }
+        
+        function updateStatus(status, isComplete = false, isPaused = false) {
+            const statusElement = document.getElementById('game-status');
+            statusElement.textContent = status;
+            
+            const statusContainer = statusElement.closest('.progress-item');
+            statusContainer.className = 'progress-item';
+            
+            if (isComplete) {
+                statusContainer.classList.add('completed');
+            } else if (isPaused) {
+                statusContainer.classList.add('paused');
+            }
+        }
+        
+        function logActivity(message) {
+            const logElement = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            
+            const timestamp = new Date().toLocaleTimeString();
+            entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${message}`;
+            
+            logElement.appendChild(entry);
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function clearLog() {
+            document.getElementById('log').innerHTML = '<div class="log-entry">Log cleared...</div>';
+        }
+        
+        // Initialize
+        logActivity('External app ready. Click "Start New Game" to begin.');
+    </script>
+</body>
+</html>

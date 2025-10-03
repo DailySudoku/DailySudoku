@@ -1,0 +1,61 @@
+
+.vkbd-background {
+    fill: var(--vkbd-bg-fill-color);
+}
+
+.vkbd-button-bg {
+    fill: var(--vkbd-button-fill-color);
+}
+
+.vkbd text,
+.vkbd path {
+    fill: var(--vkbd-button-text-color);
+}
+
+.vkbd .completed text {
+    fill: var(--vkbd-completed-button-text-color);
+}
+
+.vkbd-button-swatch.color-code-1 { fill: var(--cell-bg-1-fill-color); }
+.vkbd-button-swatch.color-code-2 { fill: var(--cell-bg-2-fill-color); }
+.vkbd-button-swatch.color-code-3 { fill: var(--cell-bg-3-fill-color); }
+.vkbd-button-swatch.color-code-4 { fill: var(--cell-bg-4-fill-color); }
+.vkbd-button-swatch.color-code-5 { fill: var(--cell-bg-5-fill-color); }
+.vkbd-button-swatch.color-code-6 { fill: var(--cell-bg-6-fill-color); }
+.vkbd-button-swatch.color-code-7 { fill: var(--cell-bg-7-fill-color); }
+.vkbd-button-swatch.color-code-8 { fill: var(--cell-bg-8-fill-color); }
+.vkbd-button-swatch.color-code-9 { fill: var(--cell-bg-9-fill-color); }
+
+.vkbd-mode-panel .background {
+    fill: var(--vkbd-mode-panel-fill-color);
+}
+
+.vkbd-mode-panel text {
+    fill: var(--vkbd-mode-text-color);
+}
+
+.vkbd-mode-panel .button-bg {
+    fill: var(--vkbd-button-fill-color);
+}
+
+.vkbd-mode-panel .active-mode-bg {
+    fill: var(--vkbd-active-mode-fill-color);
+    transition: all 120ms ease-in-out;
+}
+
+.vkbd .mode-button-icon {
+    fill: var(--vkbd-mode-icon-fill-color);
+    transition: all 50ms ease-in-out;
+}
+
+.vkbd .mode-button-icon.active {
+    fill: var(--vkbd-active-mode-icon-fill-color);
+}
+
+.vkbd .input-mode-color rect {
+    opacity: 0.7;
+}
+
+.vkbd .input-mode-color.active rect {
+    opacity: 1;
+}
